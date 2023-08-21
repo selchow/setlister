@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { SectionHeading } from '~/components/heading'
+import { Button } from '~/components/ui/button'
+import { Input } from '~/components/ui/input'
 
 export default function HomePage() {
   const [searchValue, setSearchValue] = useState('')
@@ -12,16 +15,19 @@ export default function HomePage() {
   }
 
   return (
-    <div>
-      <h2>search for an artist</h2>
-      <form onSubmit={onSubmit}>
-        <input
-          className="text-black"
+    <div className="mt-4 flex flex-col gap-4">
+      <SectionHeading>search for an artist</SectionHeading>
+      <form className="space-y-3" onSubmit={onSubmit}>
+        <Input
           onChange={(event) => setSearchValue(event.target.value)}
           value={searchValue}
+          placeholder="artist name"
+          required
           type="text"
         />
-        <button type="submit">search</button>
+        <Button variant="outline" type="submit">
+          search
+        </Button>
       </form>
     </div>
   )
