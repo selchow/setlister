@@ -26,8 +26,6 @@ export default async function handler(
       sort: 'relevance',
     })
 
-  console.log('url', url)
-
   const response = await fetch(url, {
     headers: {
       Accept: 'application/json',

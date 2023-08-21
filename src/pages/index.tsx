@@ -11,7 +11,6 @@ export default function HomePage() {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     router.push(`/search/${searchValue}`)
-    console.log('val:', searchValue)
   }
 
   return (
