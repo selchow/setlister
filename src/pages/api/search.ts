@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-// TODO: type this (or add tRPC)
+// will be replaced with tRPC
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Data = any
 
 const SETLIST_FM_API_BASE_URL = 'https://api.setlist.fm/rest/1.0'

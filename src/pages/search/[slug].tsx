@@ -1,3 +1,7 @@
+// Will be removed / replaced with tRPC
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 
@@ -51,7 +55,7 @@ export default function SearchPage() {
       {data && (
         <div>
           <p>{data.total} results</p>
-          {data.artist.map((artist) => (
+          {data.artist.map((artist: Record<string, unknown>) => (
             <div key={artist.mbid}>
               <p>{artist.name}</p>
             </div>
