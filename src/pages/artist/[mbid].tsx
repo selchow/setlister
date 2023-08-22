@@ -15,12 +15,13 @@ export default function ArtistPage() {
       mbid: (mbid as string) ?? '',
     },
     {
-      retry: false,
-      // 24 hours - this data won't ever change
-      cacheTime: 1000 * 60 * 60 * 24,
-      staleTime: 1000 * 60 * 60 * 24,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
+      retry: 2,
+
+      // 24 hours - this data rarely changes
+      cacheTime: 1000 * 60 * 60 * 24,
+      staleTime: 1000 * 60 * 60 * 24,
     },
   )
 
@@ -51,11 +52,13 @@ export default function ArtistPage() {
 
   const songList = [...songMap.entries()]
     .map((entry) => {
+      const name = entry[0]
+      const count = entry[1]
       // double check this logic (dividing by setlists.length)
-      const percentage = ((entry[1] / setlists.length) * 100).toFixed(0)
+      const percentage = ((count / setlists.length) * 100).toFixed(0)
       return {
-        name: entry[0],
-        count: entry[1],
+        name,
+        count,
         percentage,
       }
     })

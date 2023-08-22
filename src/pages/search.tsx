@@ -13,11 +13,13 @@ export default function SearchPage() {
       slug: (query as string) ?? '',
     },
     {
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      retry: 2,
+
       // 24 hours - this data won't ever change
       cacheTime: 1000 * 60 * 60 * 24,
       staleTime: 1000 * 60 * 60 * 24,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
     },
   )
 
