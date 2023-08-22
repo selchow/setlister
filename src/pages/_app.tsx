@@ -13,7 +13,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           home
         </Link>
       </header>
-      <main className="flex min-h-screen flex-col w-full max-w-3xl">
+      <main className="flex min-h-screen flex-col w-full p-2 md:p-0 md:max-w-3xl">
         {children}
       </main>
     </div>
