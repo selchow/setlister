@@ -1,4 +1,5 @@
 import type { AppRouter } from '../server/routers/_app'
+import { type inferRouterOutputs } from '@trpc/server'
 import { httpBatchLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
 
@@ -40,3 +41,5 @@ export const trpc = createTRPCNext<AppRouter>({
    **/
   ssr: false,
 })
+
+export type RouterOutputs = inferRouterOutputs<AppRouter>
