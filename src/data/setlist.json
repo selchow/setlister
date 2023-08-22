@@ -1,0 +1,1338 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 1,
+  "total": 1308,
+  "setlist": [
+    {
+      "id": "1ba5e9dc",
+      "versionId": "g139bc5fd",
+      "eventDate": "20-08-2023",
+      "lastUpdated": "2023-08-21T03:20:01.920+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "23d57453",
+        "name": "Budweiser Stage",
+        "city": {
+          "id": "6167865",
+          "name": "Toronto",
+          "state": "Ontario",
+          "stateCode": "ON",
+          "coords": { "lat": 43.700113788, "long": -79.416304194 },
+          "country": { "code": "CA", "name": "Canada" }
+        },
+        "url": "https://www.setlist.fm/venue/budweiser-stage-toronto-on-canada-23d57453.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Apartment Story" },
+              { "name": "Conversation 16" },
+              { "name": "Turtleneck", "info": "Tour debut" },
+              { "name": "Abel" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Smoke Detector" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" },
+              { "name": "About Today" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "Space Invader" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "info": "Send For Me on setlist before Vanderlyle, but cut due to 11:00 pm venue curfew",
+      "url": "https://www.setlist.fm/setlist/the-national/2023/budweiser-stage-toronto-on-canada-1ba5e9dc.html"
+    },
+
+    {
+      "id": "53a58bf9",
+      "versionId": "g7b9b9eb0",
+      "eventDate": "18-08-2023",
+      "lastUpdated": "2023-08-19T03:54:24.354+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "23d63cc7",
+        "name": "Madison Square Garden",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": { "lat": 40.7142691, "long": -74.0059729 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/madison-square-garden-new-york-ny-usa-23d63cc7.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Demons" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Apartment Story" },
+              { "name": "Conversation 16" },
+              { "name": "Cherry Tree" },
+              { "name": "Abel" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Day I Die" },
+              { "name": "Smoke Detector" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" },
+              { "name": "About Today" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Light Years" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "Space Invader" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/madison-square-garden-new-york-ny-53a58bf9.html"
+    },
+    {
+      "id": "7ba59ea0",
+      "versionId": "g139a41e5",
+      "eventDate": "16-08-2023",
+      "lastUpdated": "2023-08-18T01:58:47.693+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "73d6626d",
+        "name": "Chastain Park Amphitheater",
+        "city": {
+          "id": "4180439",
+          "name": "Atlanta",
+          "state": "Georgia",
+          "stateCode": "GA",
+          "coords": { "lat": 33.7489954, "long": -84.3879824 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/chastain-park-amphitheater-atlanta-ga-usa-73d6626d.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "This Isn't Helping" },
+              { "name": "Demons" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Apartment Story" },
+              { "name": "Abel" },
+              { "name": "Heavenfaced", "info": "first performance since 2015" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Space Invader" },
+              { "name": "Day I Die" },
+              { "name": "Hard to Find" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/chastain-park-amphitheater-atlanta-ga-7ba59ea0.html"
+    },
+    {
+      "id": "5ba5a710",
+      "versionId": "g4b9a0716",
+      "eventDate": "15-08-2023",
+      "lastUpdated": "2023-08-16T03:51:55.012+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "6bd5a28e",
+        "name": "Ascend Amphitheater",
+        "city": {
+          "id": "4644585",
+          "name": "Nashville",
+          "state": "Tennessee",
+          "stateCode": "TN",
+          "coords": { "lat": 36.1658899, "long": -86.7844432 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/ascend-amphitheater-nashville-tn-usa-6bd5a28e.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Sea of Love" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "Baby, We'll Be Fine" },
+              { "name": "I Need My Girl" },
+              { "name": "Conversation 16" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Day I Die" },
+              { "name": "Smoke Detector" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Your Mind Is Not Your Friend" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/ascend-amphitheater-nashville-tn-5ba5a710.html"
+    },
+    {
+      "id": "7ba44a2c",
+      "versionId": "g39a512b",
+      "eventDate": "12-08-2023",
+      "lastUpdated": "2023-08-17T14:21:25.896+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "3d3fd5f",
+        "name": "Mission Ballroom",
+        "city": {
+          "id": "5419384",
+          "name": "Denver",
+          "state": "Colorado",
+          "stateCode": "CO",
+          "coords": { "lat": 39.7391536, "long": -104.9847034 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/mission-ballroom-denver-co-usa-3d3fd5f.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "This Isn't Helping" },
+              { "name": "Squalor Victoria" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Guilty Party" },
+              { "name": "Afraid of Everyone" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "I Need My Girl" },
+              { "name": "This Is the Last Time" },
+              {
+                "name": "Apartment Story",
+                "info": "Preceded by a short ‘City Middle’ tease"
+              },
+              { "name": "Abel" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Rylan" },
+              { "name": "Space Invader" },
+              { "name": "Carin at the Liquor Store" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Runaway" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "Send for Me" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/mission-ballroom-denver-co-7ba44a2c.html"
+    },
+    {
+      "id": "53a45319",
+      "versionId": "g5b9ba360",
+      "eventDate": "11-08-2023",
+      "lastUpdated": "2023-08-19T01:44:55.004+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "3d3fd5f",
+        "name": "Mission Ballroom",
+        "city": {
+          "id": "5419384",
+          "name": "Denver",
+          "state": "Colorado",
+          "stateCode": "CO",
+          "coords": { "lat": 39.7391536, "long": -104.9847034 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/mission-ballroom-denver-co-usa-3d3fd5f.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Demons" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "Deep End" },
+              { "name": "Wasp Nest" },
+              { "name": "Conversation 16" },
+              { "name": "Cherry Tree" },
+              { "name": "Humiliation", "info": ">" },
+              { "name": "Murder Me Rachael" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Smoke Detector" },
+              { "name": "Day I Die", "info": "Matt in the crowd" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Light Years" },
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November", "info": "Matt in the crowd" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/mission-ballroom-denver-co-53a45319.html"
+    },
+    {
+      "id": "33a46829",
+      "versionId": "gb9a5136",
+      "eventDate": "09-08-2023",
+      "lastUpdated": "2023-08-17T14:21:06.195+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "23d77cb3",
+        "name": "Minneapolis Armory",
+        "city": {
+          "id": "5037649",
+          "name": "Minneapolis",
+          "state": "Minnesota",
+          "stateCode": "MN",
+          "coords": { "lat": 44.9799654, "long": -93.2638361 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/minneapolis-armory-minneapolis-mn-usa-23d77cb3.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Slow Show" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Sorrow" },
+              { "name": "Conversation 16" },
+              { "name": "I'll Still Destroy You" },
+              {
+                "name": "Slipped",
+                "info": "Tour debut, first performance since 2014. Snippet of ‘The Night They Drove Old Dixie Down’ after."
+              },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Space Invader" },
+              { "name": "Day I Die" },
+              { "name": "Carin at the Liquor Store" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/minneapolis-armory-minneapolis-mn-33a46829.html"
+    },
+    {
+      "id": "73a47265",
+      "versionId": "g4b9d4f86",
+      "eventDate": "08-08-2023",
+      "lastUpdated": "2023-08-09T13:29:23.727+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "13d20589",
+        "name": "The Sylvee",
+        "city": {
+          "id": "5261457",
+          "name": "Madison",
+          "state": "Wisconsin",
+          "stateCode": "WI",
+          "coords": { "lat": 43.0730517, "long": -89.4012302 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/the-sylvee-madison-wi-usa-13d20589.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Mistaken for Strangers" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              {
+                "name": "Fireproof",
+                "info": "Tour Debut, first performance since 2014"
+              },
+              { "name": "The Geese of Beverly Road" },
+              { "name": "Apartment Story" },
+              { "name": "Conversation 16" },
+              { "name": "Abel" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Smoke Detector", "info": "Live Debut" },
+              { "name": "Day I Die" },
+              {
+                "name": "Runaway",
+                "info": "Tour Debut, first performance since 2015"
+              },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Light Years" },
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/the-sylvee-madison-wi-73a47265.html"
+    },
+    {
+      "id": "1ba47d18",
+      "versionId": "g39a5133",
+      "eventDate": "07-08-2023",
+      "lastUpdated": "2023-08-17T14:20:32.640+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "6bd6ca22",
+        "name": "The Fillmore Detroit",
+        "city": {
+          "id": "4990729",
+          "name": "Detroit",
+          "state": "Michigan",
+          "stateCode": "MI",
+          "coords": { "lat": 42.331427, "long": -83.0457538 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/the-fillmore-detroit-detroit-mi-usa-6bd6ca22.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "Ice Machines" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Demons" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              {
+                "name": "Little Faith",
+                "info": "Tour debut, first performance since 2014"
+              },
+              { "name": "Humiliation", "info": ">" },
+              { "name": "Murder Me Rachael" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Space Invader" },
+              { "name": "Day I Die" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Send for Me" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/the-fillmore-detroit-detroit-mi-1ba47d18.html"
+    },
+    {
+      "id": "ba415aa",
+      "versionId": "g639d36b3",
+      "eventDate": "05-08-2023",
+      "lastUpdated": "2023-08-06T00:33:47.904+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "53d62765",
+        "name": "Parc Jean-Drapeau",
+        "city": {
+          "id": "6077243",
+          "name": "Montreal",
+          "state": "Quebec",
+          "stateCode": "QC",
+          "coords": { "lat": 45.5088375, "long": -73.587809 },
+          "country": { "code": "CA", "name": "Canada" }
+        },
+        "url": "https://www.setlist.fm/venue/parc-jean-drapeau-montreal-qc-canada-53d62765.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Conversation 16" },
+              { "name": "Day I Die" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/parc-jean-drapeau-montreal-qc-canada-ba415aa.html"
+    },
+    {
+      "id": "63a42efb",
+      "versionId": "g39a513f",
+      "eventDate": "03-08-2023",
+      "lastUpdated": "2023-08-17T14:20:06.481+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "23d09c8b",
+        "name": "Westville Music Bowl",
+        "city": {
+          "id": "4839366",
+          "name": "New Haven",
+          "state": "Connecticut",
+          "stateCode": "CT",
+          "coords": { "lat": 41.3081527, "long": -72.9281578 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/westville-music-bowl-new-haven-ct-usa-23d09c8b.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "I Should Live in Salt" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl", "info": ">" },
+              { "name": "This Is the Last Time" },
+              { "name": "Green Gloves" },
+              {
+                "name": "Cherry Tree",
+                "with": {
+                  "mbid": "9a656168-9ff3-444b-ba17-5baf720690e4",
+                  "name": "Nick Lloyd",
+                  "sortName": "Lloyd, Nick",
+                  "disambiguation": "engineer, United States",
+                  "url": "https://www.setlist.fm/setlists/nick-lloyd-73c5e669.html"
+                }
+              },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Space Invader" },
+              { "name": "Day I Die" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" }
+            ]
+          }
+        ]
+      },
+      "info": "Soundcheck: This is the Last Time, I Should Live in Salt, Cherry Tree, Space Invader, Green Gloves, Send for Me, Sea of Love",
+      "url": "https://www.setlist.fm/setlist/the-national/2023/westville-music-bowl-new-haven-ct-63a42efb.html"
+    },
+    {
+      "id": "43a4373b",
+      "versionId": "g39d191f",
+      "eventDate": "02-08-2023",
+      "lastUpdated": "2023-08-06T19:51:02.763+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "43d467df",
+        "name": "Metropolitan Opera House",
+        "city": {
+          "id": "4560349",
+          "name": "Philadelphia",
+          "state": "Pennsylvania",
+          "stateCode": "PA",
+          "coords": { "lat": 39.952335, "long": -75.163789 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/metropolitan-opera-house-philadelphia-pa-usa-43d467df.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "This Isn't Helping" },
+              { "name": "Mistaken for Strangers" },
+              { "name": "Guilty Party" },
+              { "name": "Bloodbuzz Ohio" },
+              {
+                "name": "Rylan",
+                "info": "Joking introduced as Lemonworld by Matt"
+              },
+              { "name": "Lemonworld" },
+              { "name": "I Need My Girl" },
+              { "name": "Apartment Story" },
+              {
+                "name": "I'll Still Destroy You",
+                "info": "dedicated to Jason"
+              },
+              { "name": "Lucky You", "info": "First performance since 2018" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Deep End" },
+              { "name": "Abel" },
+              { "name": "Light Years" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Your Mind Is Not Your Friend" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/metropolitan-opera-house-philadelphia-pa-43a4373b.html"
+    },
+    {
+      "id": "3a43d4f",
+      "versionId": "g1b9a5144",
+      "eventDate": "01-08-2023",
+      "lastUpdated": "2023-08-17T14:19:39.009+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "43d467df",
+        "name": "Metropolitan Opera House",
+        "city": {
+          "id": "4560349",
+          "name": "Philadelphia",
+          "state": "Pennsylvania",
+          "stateCode": "PA",
+          "coords": { "lat": 39.952335, "long": -75.163789 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/metropolitan-opera-house-philadelphia-pa-usa-43d467df.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "Demons" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Conversation 16" },
+              { "name": "Humiliation", "info": ">" },
+              { "name": "Murder Me Rachael" },
+              { "name": "Wasp Nest" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Space Invader" },
+              { "name": "Day I Die" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/metropolitan-opera-house-philadelphia-pa-3a43d4f.html"
+    },
+    {
+      "id": "ba69d46",
+      "versionId": "g53920fe9",
+      "eventDate": "05-06-2023",
+      "lastUpdated": "2023-06-06T05:28:49.877+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "7bd6de80",
+        "name": "Deer Lake Park",
+        "city": {
+          "id": "5911606",
+          "name": "Burnaby",
+          "state": "British Columbia",
+          "stateCode": "BC",
+          "coords": { "lat": 49.266362781, "long": -122.952632032 },
+          "country": { "code": "CA", "name": "Canada" }
+        },
+        "url": "https://www.setlist.fm/venue/deer-lake-park-burnaby-bc-canada-7bd6de80.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Squalor Victoria" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Guest Room", "info": "Tour debut" },
+              { "name": "Conversation 16" },
+              {
+                "name": "Patterns of Fairytales",
+                "info": "Live debut according to the band"
+              },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Hornets" },
+              { "name": "Day I Die" },
+              { "name": "Pink Rabbits" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "This Isn't Helping" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/deer-lake-park-burnaby-bc-canada-ba69d46.html"
+    },
+    {
+      "id": "3ba6b07c",
+      "versionId": "g2b9230ae",
+      "eventDate": "04-06-2023",
+      "lastUpdated": "2023-06-05T06:16:52.625+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "13d6c5e9",
+        "name": "Marymoor Park",
+        "city": {
+          "id": "5808079",
+          "name": "Redmond",
+          "state": "Washington",
+          "stateCode": "WA",
+          "coords": { "lat": 47.6739882, "long": -122.121512 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/marymoor-park-redmond-wa-usa-13d6c5e9.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Eucalyptus" },
+              { "name": "Tropic Morning News" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Lemonworld" },
+              { "name": "Conversation 16" },
+              { "name": "Anyone's Ghost", "info": "Tour debut" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Deep End", "info": "New song" },
+              { "name": "Day I Die" },
+              { "name": "Light Years" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Vanderlyle Crybaby Geeks", "info": "Acoustic" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/marymoor-park-redmond-wa-3ba6b07c.html"
+    },
+    {
+      "id": "3ba6bc80",
+      "versionId": "gb9a5146",
+      "eventDate": "03-06-2023",
+      "lastUpdated": "2023-08-17T14:19:03.810+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "73d6d699",
+        "name": "McMenamins Historic Edgefield Manor",
+        "city": {
+          "id": "5757477",
+          "name": "Troutdale",
+          "state": "Oregon",
+          "stateCode": "OR",
+          "coords": { "lat": 45.5392862, "long": -122.3873133 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/mcmenamins-historic-edgefield-manor-troutdale-or-usa-73d6d699.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "Ice Machines" },
+              { "name": "Demons" },
+              { "name": "Mistaken for Strangers" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "I'll Still Destroy You" },
+              { "name": "Humiliation", "info": ">" },
+              { "name": "Murder Me Rachael" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Space Invader" },
+              { "name": "Abel", "info": "incomplete" },
+              { "name": "Pink Rabbits" },
+              { "name": "Rylan" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Your Mind Is Not Your Friend" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "info": "About Today & New Order T-Shirt was written on the setlist but not performed.",
+      "url": "https://www.setlist.fm/setlist/the-national/2023/mcmenamins-historic-edgefield-manor-troutdale-or-3ba6bc80.html"
+    },
+    {
+      "id": "bb945fe",
+      "versionId": "g5392ef71",
+      "eventDate": "02-06-2023",
+      "lastUpdated": "2023-06-03T04:45:08.272+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "73d6d699",
+        "name": "McMenamins Historic Edgefield Manor",
+        "city": {
+          "id": "5757477",
+          "name": "Troutdale",
+          "state": "Oregon",
+          "stateCode": "OR",
+          "coords": { "lat": 45.5392862, "long": -122.3873133 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/mcmenamins-historic-edgefield-manor-troutdale-or-usa-73d6d699.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "This Isn't Helping" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "I Need My Girl" },
+              { "name": "This Is the Last Time" },
+              { "name": "Green Gloves" },
+              { "name": "Slow Show" },
+              { "name": "Conversation 16" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Light Years" },
+              { "name": "Cherry Tree", "info": "First time since 2010" },
+              { "name": "Day I Die" },
+              { "name": "Tour Manager" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Send for Me" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/mcmenamins-historic-edgefield-manor-troutdale-or-bb945fe.html"
+    },
+    {
+      "id": "3bb95894",
+      "versionId": "g73929add",
+      "eventDate": "31-05-2023",
+      "lastUpdated": "2023-06-01T12:54:04.010+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "4bd61ff2",
+        "name": "Greek Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": { "lat": 34.052, "long": -118.244 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/greek-theatre-los-angeles-ca-usa-4bd61ff2.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "This Isn't Helping" },
+              { "name": "Afraid of Everyone" },
+              { "name": "Squalor Victoria" },
+              { "name": "Demons" },
+              { "name": "Sea of Love" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "Apartment Story" },
+              { "name": "All the Wine" },
+              { "name": "The Geese of Beverly Road" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Quiet Light", "info": "Tour debut" },
+              { "name": "Deep End" },
+              { "name": "Carin at the Liquor Store" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Your Mind Is Not Your Friend" },
+              { "name": "Light Years" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "Vanderlyle Crybaby Geeks" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/greek-theatre-los-angeles-ca-3bb95894.html"
+    },
+    {
+      "id": "13b96189",
+      "versionId": "g1b9a514c",
+      "eventDate": "30-05-2023",
+      "lastUpdated": "2023-08-17T14:18:25.469+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "4bd61ff2",
+        "name": "Greek Theatre",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": { "lat": 34.052, "long": -118.244 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/greek-theatre-los-angeles-ca-usa-4bd61ff2.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Once Upon a Poolside" },
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "New Order T-Shirt" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "I Need My Girl" },
+              { "name": "Abel" },
+              { "name": "Conversation 16" },
+              { "name": "I'll Still Destroy You" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Humiliation" },
+              { "name": "Murder Me Rachael" },
+              { "name": "Space Invader" },
+              { "name": "Day I Die" },
+              { "name": "Pink Rabbits" },
+              { "name": "Rylan" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              { "name": "Weird Goodbyes" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" },
+              { "name": "About Today" },
+              { "name": "Send for Me" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/greek-theatre-los-angeles-ca-13b96189.html"
+    },
+    {
+      "id": "23b978e7",
+      "versionId": "g7b91b618",
+      "eventDate": "28-05-2023",
+      "lastUpdated": "2023-06-26T07:40:31.967+0000",
+      "artist": {
+        "mbid": "664c3e0e-42d8-48c1-b209-1efca19c0325",
+        "name": "The National",
+        "sortName": "National, The",
+        "disambiguation": "",
+        "url": "https://www.setlist.fm/setlists/the-national-53d69b79.html"
+      },
+      "venue": {
+        "id": "3d399cf",
+        "name": "Napa Valley Expo",
+        "city": {
+          "id": "5376095",
+          "name": "Napa",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": { "lat": 38.2971367, "long": -122.2855293 },
+          "country": { "code": "US", "name": "United States" }
+        },
+        "url": "https://www.setlist.fm/venue/napa-valley-expo-napa-ca-usa-3d399cf.html"
+      },
+      "tour": { "name": "First Two Pages of Frankenstein" },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              { "name": "Tropic Morning News" },
+              { "name": "Eucalyptus" },
+              { "name": "Don't Swallow the Cap" },
+              { "name": "Bloodbuzz Ohio" },
+              { "name": "The System Only Dreams in Total Darkness" },
+              { "name": "I Need My Girl" },
+              { "name": "Mistaken for Strangers" },
+              { "name": "Alien" },
+              { "name": "Grease in Your Hair" },
+              { "name": "Conversation 16" },
+              { "name": "Day I Die" },
+              { "name": "England" },
+              { "name": "Graceless" },
+              { "name": "Fake Empire" },
+              { "name": "Mr. November" },
+              { "name": "Terrible Love" }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/the-national/2023/napa-valley-expo-napa-ca-23b978e7.html"
+    }
+  ]
+}

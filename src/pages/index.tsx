@@ -10,7 +10,7 @@ export default function HomePage() {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    router.push(`/search/${searchValue}`)
+    router.push(`/search?query=${searchValue}`)
   }
 
   return (
