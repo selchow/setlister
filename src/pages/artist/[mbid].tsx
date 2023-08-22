@@ -91,7 +91,6 @@ function calculateSongInfo(
     .map((entry) => {
       const name = entry[0]
       const count = entry[1]
-      // double check this logic (dividing by setlists.length)
       const percentage = ((count / setlists.length) * 100).toFixed(0)
       return {
         name,
