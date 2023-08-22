@@ -5,6 +5,7 @@ import { Card, CardDescription } from '~/components/ui/card'
 import { trpc } from '~/utils/trpc'
 
 export default function ArtistPage() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lookbackCount, setLookbackCount] = useState(10)
   const router = useRouter()
   const { mbid } = router.query
