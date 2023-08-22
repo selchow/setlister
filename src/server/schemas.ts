@@ -25,14 +25,14 @@ const SetlistSchema = z.object({
     url: z.string(),
     id: z.string(),
     name: z.string(),
-    // city?
-    // city: z.object({})
+    city: z.object({
+      name: z.string(),
+      state: z.string(),
+    }),
   }),
-
   sets: z.object({
     set: z.array(
       z.object({
-        // name: z.string(),
         encore: z.number().optional(),
         song: z.array(
           z.object({
@@ -42,15 +42,6 @@ const SetlistSchema = z.object({
       }),
     ),
   }),
-
-  // tour: z.object({
-  // name: z.string(),
-  // }),
-
-  // part of the response, but not needed probably
-  // info: z.string(),
-  // versionId: z.string(),
-  // lastUpdated: z.string(),
 })
 
 export const SetlistResponseSchema = z.object({
