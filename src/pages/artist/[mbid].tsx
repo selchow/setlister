@@ -67,11 +67,11 @@ function calculateSongInfo(
     return []
   }
 
-  const setlists = data?.setlist.slice(0, lookbackCount) ?? []
+  const setlists = data.setlist.slice(0, lookbackCount)
 
   const songMap: Map<string, number> = new Map()
 
-  for (const setlist of setlists ?? []) {
+  for (const setlist of setlists) {
     // iterate through each "set" in a setlist. this can include the original set and any encores
     for (const set of setlist.sets.set) {
       // iterate through each song for this setlists set
