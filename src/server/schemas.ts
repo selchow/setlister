@@ -16,6 +16,15 @@ export const ArtistSearchSchema = z.object({
   total: z.number(),
 })
 
+export const SongSchema = z.object({
+  name: z.string(),
+})
+
+export const SetSchema = z.object({
+  encore: z.number().optional(),
+  song: z.array(SongSchema),
+})
+
 const SetlistSchema = z.object({
   artist: ArtistSchema,
   id: z.string(),
@@ -31,16 +40,7 @@ const SetlistSchema = z.object({
     }),
   }),
   sets: z.object({
-    set: z.array(
-      z.object({
-        encore: z.number().optional(),
-        song: z.array(
-          z.object({
-            name: z.string(),
-          }),
-        ),
-      }),
-    ),
+    set: z.array(SetSchema),
   }),
 })
 
