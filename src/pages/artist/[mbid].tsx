@@ -69,6 +69,7 @@ export default function ArtistPage() {
                   </AccordionTrigger>
                   <AccordionContent className="space-y-2">
                     <div className="flex items-center gap-4 justify-between p-2">
+                      {/* TODO: UX when not logged in or not authorized */}
                       <Button
                         disabled={isCreatingPlaylist || isSuccess}
                         onClick={() => {
