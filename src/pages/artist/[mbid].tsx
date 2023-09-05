@@ -1,6 +1,6 @@
 import type { RouterOutputs } from '~/utils/trpc'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import { Fragment } from 'react'
 import { SectionHeading } from '~/components/heading'
 import { Card, CardDescription } from '~/components/ui/card'
 import { trpc } from '~/utils/trpc'
@@ -93,7 +93,7 @@ export default function ArtistPage() {
 
                     {setlist.sets.set.map((set) => (
                       // TODO: need to fix key issue here (there's no id)
-                      <React.Fragment key={set.encore}>
+                      <Fragment key={set.encore}>
                         {set.encore && <p className="py-2">Encore:</p>}
                         <ol className="space-y-1">
                           {set.song.map((song, index) => (
@@ -102,7 +102,7 @@ export default function ArtistPage() {
                             </li>
                           ))}
                         </ol>
-                      </React.Fragment>
+                      </Fragment>
                     ))}
                   </AccordionContent>
                 </AccordionItem>
