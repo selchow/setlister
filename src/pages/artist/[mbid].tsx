@@ -1,13 +1,19 @@
 import type { RouterOutputs } from '~/utils/trpc'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { Fragment } from 'react'
 import { SectionHeading } from '~/components/heading'
 import { Card, CardDescription } from '~/components/ui/card'
 import { trpc } from '~/utils/trpc'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '~/components/ui/accordion'
+import { Button } from '~/components/ui/button'
 
 export default function ArtistPage() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [lookbackCount, setLookbackCount] = useState(10)
   const router = useRouter()
   const { mbid } = router.query
 
@@ -26,8 +32,17 @@ export default function ArtistPage() {
     },
   )
 
+  const {
+    mutate,
+    isLoading: isCreatingPlaylist,
+    isSuccess,
+  } = trpc.spotify.createPlaylist.useMutation()
+
   // is there a better way to get artist info from the data?
   const artist = data && data.setlist[0].artist
+
+  // TODO: make this configurable
+  const lookbackCount = 10
 
   const songList = calculateSongInfo(data, lookbackCount)
 
@@ -35,20 +50,83 @@ export default function ArtistPage() {
     <div className="mt-4 flex flex-col gap-2">
       <SectionHeading>{artist?.name}</SectionHeading>
 
-      <h3 className="text-lg font-semibold">
-        stats: last {lookbackCount} setlists
-      </h3>
+      <Tabs defaultValue="setlists">
+        <TabsList>
+          <TabsTrigger value="setlists">setlists</TabsTrigger>
+          <TabsTrigger value="stats">stats</TabsTrigger>
+        </TabsList>
 
-      {songList.map((entry) => {
-        return (
-          <Card key={entry.name} className="p-2">
-            <h4 className="font-semibold">{entry.name}</h4>
-            <CardDescription>
-              played {entry.count} times ({entry.percentage}% of shows)
-            </CardDescription>
-          </Card>
-        )
-      })}
+        <TabsContent value="setlists" className="flex flex-col gap-2">
+          <h3 className="text-lg font-semibold">recent setlists</h3>
+
+          <Accordion type="single" collapsible className="w-full">
+            {data &&
+              data.setlist.map((setlist) => (
+                <AccordionItem value={setlist.id} key={setlist.id}>
+                  <AccordionTrigger>
+                    {/* TODO: format date better */}
+                    {setlist.venue.name} - {setlist.eventDate}
+                  </AccordionTrigger>
+                  <AccordionContent className="space-y-2">
+                    <div className="flex items-center gap-4 justify-between p-2">
+                      {/* TODO: UX when not logged in or not authorized */}
+                      <Button
+                        disabled={isCreatingPlaylist || isSuccess}
+                        onClick={() => {
+                          mutate({
+                            artistName: artist?.name ?? '',
+                            sets: setlist.sets.set,
+                          })
+                        }}
+                      >
+                        {isCreatingPlaylist
+                          ? 'Loading...'
+                          : isSuccess
+                          ? 'Playlist created!'
+                          : 'Create playlist'}
+                      </Button>
+
+                      <a className="" href={setlist.url}>
+                        view on setlist.fm
+                      </a>
+                    </div>
+
+                    {setlist.sets.set.map((set) => (
+                      // TODO: need to fix key issue here (there's no id)
+                      <Fragment key={set.encore}>
+                        {set.encore && <p className="py-2">Encore:</p>}
+                        <ol className="space-y-1">
+                          {set.song.map((song, index) => (
+                            <li key={song.name}>
+                              {index + 1}: {song.name}
+                            </li>
+                          ))}
+                        </ol>
+                      </Fragment>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+          </Accordion>
+        </TabsContent>
+
+        <TabsContent value="stats" className="flex flex-col gap-2">
+          <h3 className="text-lg font-semibold">
+            stats: last {lookbackCount} setlists
+          </h3>
+
+          {songList.map((entry) => {
+            return (
+              <Card key={entry.name} className="p-2">
+                <h4 className="font-semibold">{entry.name}</h4>
+                <CardDescription>
+                  played {entry.count} times ({entry.percentage}% of shows)
+                </CardDescription>
+              </Card>
+            )
+          })}
+        </TabsContent>
+      </Tabs>
 
       {isLoading && <p>loading...</p>}
 
@@ -74,13 +152,10 @@ function calculateSongInfo(
   for (const setlist of setlists) {
     // iterate through each "set" in a setlist. this can include the original set and any encores
     for (const set of setlist.sets.set) {
-      // iterate through each song for this setlists set
       for (const song of set.song) {
         if (songMap.has(song.name)) {
-          // if the song is already in the map, increment the count
           songMap.set(song.name, (songMap.get(song.name) ?? 0) + 1)
         } else {
-          // otherwise, initialize the count to 1
           songMap.set(song.name, 1)
         }
       }

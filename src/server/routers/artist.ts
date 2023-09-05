@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import mockSetlistData from '~/data/setlist.json'
+import mockSearchData from '~/data/artist-search.json'
 import { createTRPCRouter, procedure } from '../trpc'
 import { ArtistSearchSchema, SetlistResponseSchema } from '../schemas'
 
@@ -14,6 +15,12 @@ export const artistRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input }) => {
+      // limit API calls during development
+      if (process.env.USE_MOCK_DATA === 'true') {
+        const result = ArtistSearchSchema.parse(mockSearchData)
+        return result
+      }
+
       const { slug, page } = input
 
       const url =

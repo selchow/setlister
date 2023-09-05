@@ -2,16 +2,30 @@ import '~/styles/globals.css'
 import type { AppProps, AppType } from 'next/app'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Link from 'next/link'
+import { ClerkProvider, SignOutButton, useAuth } from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
 import { trpc } from '~/utils/trpc'
 
 // Move this to a new file?
 function Layout({ children }: { children: React.ReactNode }) {
+  const { isSignedIn } = useAuth()
+
   return (
     <div className={`flex flex-col items-center font-sans`}>
-      <header className="p-2 flex justify-center w-full bg-background border-b">
-        <Link className="text-lg" href="/">
-          home
-        </Link>
+      <header className="p-2 flex justify-center gap-5 w-full bg-background border-b">
+        <Link href="/">home</Link>
+        {isSignedIn ? (
+          <>
+            {/* TODO: check if user is already authed (metadata) */}
+            <Link href="/authorize">authorize with spotify</Link>
+            <SignOutButton>sign out</SignOutButton>
+          </>
+        ) : (
+          <>
+            <Link href="/sign-in">sign in</Link>
+            <Link href="/register">register</Link>
+          </>
+        )}
       </header>
       <main className="flex min-h-screen flex-col w-full p-2 md:p-0 md:max-w-3xl">
         {children}
@@ -24,11 +38,13 @@ const queryClient = new QueryClient()
 
 const App: AppType = ({ Component, pageProps }: AppProps) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </QueryClientProvider>
+    <ClerkProvider {...pageProps} appearance={{ baseTheme: dark }}>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </QueryClientProvider>
+    </ClerkProvider>
   )
 }
 
