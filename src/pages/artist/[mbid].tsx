@@ -73,7 +73,6 @@ export default function ArtistPage() {
                       <Button
                         disabled={isCreatingPlaylist || isSuccess}
                         onClick={() => {
-                          console.log('creating a new playlist')
                           mutate({
                             artistName: artist?.name ?? '',
                             sets: setlist.sets.set,

@@ -115,8 +115,6 @@ const getTracksFromSpotify = async (artistName: string, songs: Song[]) => {
       `track:${name.replace("'", '')} artist:${artistName}`,
     )
 
-    console.log('respy ', response)
-
     const parsedData = ItemsSchema.parse(response.body?.tracks?.items)
 
     for (const item of parsedData) {
@@ -127,6 +125,9 @@ const getTracksFromSpotify = async (artistName: string, songs: Song[]) => {
       ) {
         continue
       }
+
+      // TODO: if there's a live version and studio version, we should checek to make
+      // sure we're using the studio version.
 
       // found a match - it's possible to have two songs with same name by same artist
       // (e.g. single vs album version) so confirm that we aren't adding the same song twice
