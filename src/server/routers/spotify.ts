@@ -38,7 +38,7 @@ export const spotifyRouter = createTRPCRouter({
     .input(
       z.object({
         artistName: z.string(),
-        sets: z.array(SetSchema),
+        sets: z.array(SetSchema).min(1),
 
         // TODO: playlist name, public/private, description
       }),
