@@ -57,28 +57,20 @@ export const spotifyRouter = createTRPCRouter({
         spotifyApi.refreshAccessToken()
       }
 
-      console.debug('refreshed access token')
-
       // combine songs from multiple sets into one array
       const songs = sets.reduce<Song[]>((acc, curr) => {
         acc.push(...curr.song)
         return acc
       }, [])
 
-      console.debug('songs to add: ', songs)
-
       // fetch track URIs from Spotify
       const tracks = await getTracksFromSpotify(artistName, songs)
-
-      console.debug('tracks to add: ', tracks)
 
       // create playlist (add description, public/private, etc. later)
       const playlist = await spotifyApi.createPlaylist('test playlist', {
         description: 'test description',
         public: true,
       })
-
-      console.debug('create plstlist result: ', playlist)
 
       // add tracks to playlist
       const addTrackResult = await spotifyApi.addTracksToPlaylist(
