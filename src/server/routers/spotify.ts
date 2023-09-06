@@ -2,13 +2,14 @@ import type { SongSchema } from '../schemas'
 import { z } from 'zod'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { clerkClient } from '@clerk/nextjs'
+import { env } from '~/utils/env/server.mjs'
 import { authedProcedure, createTRPCRouter } from '../trpc'
 import { SetSchema } from '../schemas'
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
-  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-  redirectUri: process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI,
+  clientId: env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
+  clientSecret: env.SPOTIFY_CLIENT_SECRET,
+  redirectUri: env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI,
 })
 
 export const spotifyRouter = createTRPCRouter({
