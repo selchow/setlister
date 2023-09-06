@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { Button } from '~/components/ui/button'
 import { trpc } from '~/utils/trpc'
+import { env } from '~/utils/env/client.mjs'
 
 export default function AuthorizePage() {
   const router = useRouter()
@@ -14,8 +15,8 @@ export default function AuthorizePage() {
   const authUrl =
     'https://accounts.spotify.com/authorize?' +
     new URLSearchParams({
-      client_id: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID ?? '',
-      redirect_uri: process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI ?? '',
+      client_id: env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
+      redirect_uri: env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI,
       response_type: 'code',
       scope: 'playlist-modify-public playlist-modify-private',
       // TODO: figure out what state is for?

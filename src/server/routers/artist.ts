@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import mockSetlistData from '~/data/setlist.json'
 import mockSearchData from '~/data/artist-search.json'
+import { env } from '~/utils/env/server.mjs'
 import { createTRPCRouter, procedure } from '../trpc'
 import { ArtistSearchSchema, SetlistResponseSchema } from '../schemas'
 
@@ -16,7 +17,7 @@ export const artistRouter = createTRPCRouter({
     )
     .query(async ({ input }) => {
       // limit API calls during development
-      if (process.env.USE_MOCK_DATA === 'true') {
+      if (env.USE_MOCK_DATA) {
         const result = ArtistSearchSchema.parse(mockSearchData)
         return result
       }
@@ -35,7 +36,7 @@ export const artistRouter = createTRPCRouter({
       const response = await fetch(url, {
         headers: {
           Accept: 'application/json',
-          'x-api-key': process.env.SETLIST_FM_API_KEY ?? '',
+          'x-api-key': env.SETLIST_FM_API_KEY,
         },
       })
 
@@ -60,7 +61,7 @@ export const artistRouter = createTRPCRouter({
       const { mbid, page } = input
 
       // limit API calls during development
-      if (process.env.USE_MOCK_DATA === 'true') {
+      if (env.USE_MOCK_DATA) {
         const result = SetlistResponseSchema.parse(mockSetlistData)
         return result
       }
@@ -74,7 +75,7 @@ export const artistRouter = createTRPCRouter({
       const response = await fetch(url, {
         headers: {
           Accept: 'application/json',
-          'x-api-key': process.env.SETLIST_FM_API_KEY ?? '',
+          'x-api-key': env.SETLIST_FM_API_KEY,
         },
       })
 
