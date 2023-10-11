@@ -55,7 +55,15 @@ export const spotifyRouter = createTRPCRouter({
       spotifyApi.setRefreshToken(refreshToken as string)
 
       if (Date.now() > Number(expiresAtTimestampMs)) {
-        spotifyApi.refreshAccessToken()
+        const result = await spotifyApi.refreshAccessToken()
+        await clerkClient.users.updateUserMetadata(ctx.userId, {
+          privateMetadata: {
+            accessToken: result.body.access_token,
+            refreshToken: result.body.refresh_token,
+            expiresAtTimestampMs: Date.now() + result.body.expires_in * 1000,
+          },
+        })
+        spotifyApi.setAccessToken(result.body.access_token)
       }
 
       // combine songs from multiple sets into one array
