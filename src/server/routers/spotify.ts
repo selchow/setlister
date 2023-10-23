@@ -1,7 +1,6 @@
 import type { SongSchema } from '../schemas'
 import { z } from 'zod'
 import { clerkClient } from '@clerk/nextjs'
-import { env } from '~/utils/env/server.mjs'
 import { authedProcedure, createTRPCRouter } from '../trpc'
 import { SetSchema } from '../schemas'
 import {
