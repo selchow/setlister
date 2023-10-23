@@ -1,16 +1,15 @@
 import type { SongSchema } from '../schemas'
 import { z } from 'zod'
-import SpotifyWebApi from 'spotify-web-api-node'
 import { clerkClient } from '@clerk/nextjs'
-import { env } from '~/utils/env/server.mjs'
 import { authedProcedure, createTRPCRouter } from '../trpc'
 import { SetSchema } from '../schemas'
-
-const spotifyApi = new SpotifyWebApi({
-  clientId: env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
-  clientSecret: env.SPOTIFY_CLIENT_SECRET,
-  redirectUri: env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI,
-})
+import {
+  addTracksToPlaylist,
+  createPlaylist,
+  getAccessToken,
+  requestAccessToken,
+  searchTracks,
+} from '../api/spotify'
 
 export const spotifyRouter = createTRPCRouter({
   authorize: authedProcedure
@@ -20,18 +19,18 @@ export const spotifyRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const result = await spotifyApi.authorizationCodeGrant(input.code)
+      const { access_token, expires_in, refresh_token } =
+        await requestAccessToken(input.code)
 
-      // write token info to Clerk's metadata
       await clerkClient.users.updateUserMetadata(ctx.userId, {
         publicMetadata: {
           isAccountSetup: true,
         },
         privateMetadata: {
-          accessToken: result.body.access_token,
-          refreshToken: result.body.refresh_token,
-          expiresAtTimestampMs: Date.now() + result.body.expires_in * 1000,
-        },
+          accessToken: access_token,
+          refreshToken: refresh_token,
+          expiresAtTimestampMs: Date.now() + expires_in * 1000,
+        } satisfies UserPrivateMetadata,
       })
     }),
 
@@ -40,114 +39,70 @@ export const spotifyRouter = createTRPCRouter({
       z.object({
         artistName: z.string(),
         sets: z.array(SetSchema).min(1),
-
-        // TODO: playlist name, public/private, description
+        // TODO: add playlist name, description, public/private
       }),
     )
     .mutation(async ({ ctx, input }) => {
       const { artistName, sets } = input
 
-      // set up Spotify access token, refresh if needed
-      const user = await clerkClient.users.getUser(ctx.userId)
-      const { accessToken, refreshToken, expiresAtTimestampMs } =
-        user.privateMetadata
-      spotifyApi.setAccessToken(accessToken as string)
-      spotifyApi.setRefreshToken(refreshToken as string)
-
-      if (Date.now() > Number(expiresAtTimestampMs)) {
-        const result = await spotifyApi.refreshAccessToken()
-        await clerkClient.users.updateUserMetadata(ctx.userId, {
-          privateMetadata: {
-            accessToken: result.body.access_token,
-            refreshToken: result.body.refresh_token,
-            expiresAtTimestampMs: Date.now() + result.body.expires_in * 1000,
-          },
-        })
-        spotifyApi.setAccessToken(result.body.access_token)
-      }
+      const accessToken = await getAccessToken(ctx.userId)
 
       // combine songs from multiple sets into one array
-      const songs = sets.reduce<Song[]>((acc, curr) => {
-        acc.push(...curr.song)
-        return acc
-      }, [])
+      const songs: Song[] = []
+      for (const set of sets) {
+        songs.push(...set.song)
+      }
 
-      // fetch track URIs from Spotify
-      const tracks = await getTracksFromSpotify(artistName, songs)
+      const tracks = await getTracksFromSpotify(accessToken, artistName, songs)
 
-      // create playlist (add description, public/private, etc. later)
-      const playlist = await spotifyApi.createPlaylist('test playlist', {
-        description: 'test description',
-        public: true,
+      const playlist = await createPlaylist({
+        accessToken,
+        playlistName: 'test',
+        playlistDescription: 'something',
+        isPublic: false,
       })
 
-      // add tracks to playlist
-      const addTrackResult = await spotifyApi.addTracksToPlaylist(
-        playlist.body.id,
-        tracks.map((track) => track.uri),
-      )
+      const addTrackResult = await addTracksToPlaylist({
+        accessToken,
+        playlistId: playlist.id,
+        trackUris: tracks.map((track) => track.uri),
+      })
 
       return addTrackResult
     }),
 })
 
-// TODO: move types / schemas to different files
-
 type Song = z.infer<typeof SongSchema>
 
-type SongWithSpotifyData = {
-  name: string
-  artistName: string
-  uri: string
-}
-
-const ArtistSchema = z.object({
-  name: z.string(),
-  uri: z.string(),
-})
-
-const ItemsSchema = z
-  .object({
-    artists: z.array(ArtistSchema).min(1),
-    name: z.string(),
-    id: z.string(),
-    uri: z.string(),
-  })
-  .array()
-
-const getTracksFromSpotify = async (artistName: string, songs: Song[]) => {
-  const result: SongWithSpotifyData[] = []
+const getTracksFromSpotify = async (
+  accessToken: string,
+  artistName: string,
+  songs: Song[],
+) => {
+  const result: Array<{ name: string; uri: string }> = []
 
   for (const { name } of songs) {
-    const response = await spotifyApi.searchTracks(
-      // remove apostrophes in track name, noticed some weird behavior with them
-      `track:${name.replace("'", '')} artist:${artistName}`,
-    )
+    const searchResult = await searchTracks({
+      accessToken,
+      artistName,
+      trackName: name.replace("'", ''), // remove apostrophes, ran into issues with them
+    })
 
-    const parsedData = ItemsSchema.parse(response.body?.tracks?.items)
-
-    for (const item of parsedData) {
-      // check artist and track name to make sure it's the right song (songs can have multiple artists)
+    for (const song of searchResult) {
+      // confirm artist and track name match
       if (
-        !areStringsEqual(item.name, name) ||
-        !item.artists.find((artist) => areStringsEqual(artist.name, artistName))
+        !areStringsEqual(song.name, name) ||
+        !song.artists.find((artist) => areStringsEqual(artist.name, artistName))
       ) {
         continue
       }
 
-      // TODO: if there's a live version and studio version, we should checek to make
-      // sure we're using the studio version.
-
-      // found a match - it's possible to have two songs with same name by same artist
-      // (e.g. single vs album version) so confirm that we aren't adding the same song twice
-      if (!result.find((song) => areStringsEqual(song.name, name))) {
-        // TODO: just return uri, not whole object
-        result.push({
-          name,
-          artistName,
-          uri: item.uri,
-        })
+      // found a match - confirm we aren't adding the same song twice (e.g. live, album, single)
+      if (result.find((song) => areStringsEqual(song.name, name))) {
+        continue
       }
+
+      result.push({ uri: song.uri, name })
     }
   }
 
@@ -155,8 +110,8 @@ const getTracksFromSpotify = async (artistName: string, songs: Song[]) => {
 }
 
 const areStringsEqual = (a: string, b: string) => {
-  // Identifying tracks is hard because of minor variations, so we do a locale compare
-  // of equality, as well as checking if one string is a substring of the other
+  // Identifying tracks is hard because of minor variations, so we do a case-insensitive
+  //  compare, as well as checking if one string is a substring of the other
   return (
     a.toLowerCase().includes(b.toLowerCase()) ||
     b.toLowerCase().includes(a.toLowerCase()) ||
