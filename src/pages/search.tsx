@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Card, Title } from '@mantine/core'
+import { Card, Title, Loader } from '@mantine/core'
 import { trpc } from '~/utils/trpc'
 
 export default function SearchPage() {
@@ -27,7 +27,11 @@ export default function SearchPage() {
       </Title>
       <p>you searched for: {query}</p>
 
-      {isLoading && <p>loading...</p>}
+      {isLoading && (
+        <div className="flex justify-center">
+          <Loader m={96} size={50} color="blue" />
+        </div>
+      )}
 
       {isError && <p>sorry, something went wrong :(</p>}
 
