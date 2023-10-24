@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { SectionHeading } from '~/components/heading'
-import { Card } from '~/components/ui/card'
+import { Card, Title, Loader } from '@mantine/core'
 import { trpc } from '~/utils/trpc'
 
 export default function SearchPage() {
@@ -16,8 +15,6 @@ export default function SearchPage() {
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       retry: 2,
-
-      // 24 hours - this data won't ever change
       cacheTime: 1000 * 60 * 60 * 24,
       staleTime: 1000 * 60 * 60 * 24,
     },
@@ -25,10 +22,16 @@ export default function SearchPage() {
 
   return (
     <div className="mt-4 space-y-3">
-      <SectionHeading>results </SectionHeading>
+      <Title pb={4} order={2} size="h2" className="border-b">
+        results
+      </Title>
       <p>you searched for: {query}</p>
 
-      {isLoading && <p>loading...</p>}
+      {isLoading && (
+        <div className="flex justify-center">
+          <Loader m={96} size={50} color="blue" />
+        </div>
+      )}
 
       {isError && <p>sorry, something went wrong :(</p>}
 
@@ -39,7 +42,7 @@ export default function SearchPage() {
             href={`/artist/${artist.mbid}`}
             key={artist.mbid}
           >
-            <Card>
+            <Card withBorder>
               <h3>{artist.name}</h3>
             </Card>
           </Link>

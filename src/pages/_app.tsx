@@ -1,18 +1,22 @@
 import '~/styles/globals.css'
+import '@mantine/core/styles.css'
+
 import type { AppProps, AppType } from 'next/app'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Link from 'next/link'
 import { ClerkProvider, SignOutButton, useAuth } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
+import { MantineProvider } from '@mantine/core'
+import { useState } from 'react'
 import { trpc } from '~/utils/trpc'
 
-// Move this to a new file?
 function Layout({ children }: { children: React.ReactNode }) {
   const { isSignedIn } = useAuth()
 
   return (
     <div className={`flex flex-col items-center font-sans`}>
-      <header className="p-2 flex justify-center gap-5 w-full bg-background border-b">
+      <header className="p-2 flex justify-center gap-5 w-full border-b">
         <Link href="/">home</Link>
         {isSignedIn ? (
           <>
@@ -34,15 +38,22 @@ function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-const queryClient = new QueryClient()
+// const theme = createTheme({
+//   /** Put your mantine theme override here */
+// })
 
 const App: AppType = ({ Component, pageProps }: AppProps) => {
+  const [queryClient] = useState(() => new QueryClient())
+
   return (
     <ClerkProvider {...pageProps} appearance={{ baseTheme: dark }}>
       <QueryClientProvider client={queryClient}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <MantineProvider defaultColorScheme="dark">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </MantineProvider>
       </QueryClientProvider>
     </ClerkProvider>
   )
