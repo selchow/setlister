@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { Button } from '~/components/ui/button'
+import { Button } from '@mantine/core'
 import { trpc } from '~/utils/trpc'
 import { env } from '~/utils/env/client.mjs'
 
@@ -60,8 +60,8 @@ export default function AuthorizePage() {
             confirm authorization. This allows us to create public and private
             playlists.
           </p>
-          <Button variant="default" asChild>
-            <a href={authUrl}>Authorize</a>
+          <Button variant="default" component="a" href={authUrl}>
+            Authorize
           </Button>
         </>
       )}

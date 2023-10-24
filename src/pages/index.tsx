@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { SectionHeading } from '~/components/heading'
-import { Button } from '~/components/ui/button'
-import { Input } from '~/components/ui/input'
+import { TextInput, Button, Title } from '@mantine/core'
 
 export default function HomePage() {
   const [searchValue, setSearchValue] = useState('')
@@ -15,16 +13,19 @@ export default function HomePage() {
 
   return (
     <div className="mt-4 flex flex-col gap-4">
-      <SectionHeading>search for an artist</SectionHeading>
+      <Title pb={4} order={2} size="h2" className="border-b">
+        search for an artist
+      </Title>
       <form className="space-y-3" onSubmit={onSubmit}>
-        <Input
+        <TextInput
           onChange={(event) => setSearchValue(event.target.value)}
           value={searchValue}
-          placeholder="artist name"
+          placeholder="radiohead"
+          label="artist name"
           required
           type="text"
         />
-        <Button variant="outline" type="submit">
+        <Button variant="default" type="submit">
           search
         </Button>
       </form>
