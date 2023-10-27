@@ -18,11 +18,6 @@ type TransformedSetlistResponse = {
   url: string
 }
 
-type Setlist = {
-  encore: boolean
-  name: string
-}[]
-
 function transformSetlistResponse(response: SetlistResponse) {
   const transformedResult: TransformedSetlistResponse[] = []
   for (const setlist of response.setlist) {
