@@ -33,10 +33,6 @@ function transformSetlistResponse(response: SetlistResponse) {
   return transformedResult
 }
 
-// new flattened structure - no nested sets
-// use name as key, should be fine in 99% of cases
-// { name: string; startOfEncore: boolean }[]
-
 export const artistRouter = createTRPCRouter({
   search: procedure
     .input(
