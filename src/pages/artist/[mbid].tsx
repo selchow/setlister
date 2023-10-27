@@ -101,7 +101,6 @@ export default function ArtistPage() {
   const router = useRouter()
   const { mbid } = router.query
   const [opened, { open, close }] = useDisclosure()
-
   const { isSignedIn } = useUser()
 
   const [activeSetlist, setActiveSetlist] = useState<SetlistData | null>(null)
