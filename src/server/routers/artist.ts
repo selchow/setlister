@@ -7,6 +7,32 @@ import { ArtistSearchSchema, SetlistResponseSchema } from '../schemas'
 
 const SETLIST_FM_API_BASE_URL = 'https://api.setlist.fm/rest/1.0'
 
+type SetlistResponse = z.infer<typeof SetlistResponseSchema>
+
+type TransformedSetlistResponse = {
+  id: string
+  artist: SetlistResponse['setlist'][0]['artist']
+  venue: SetlistResponse['setlist'][0]['venue']
+  date: string
+  sets: SetlistResponse['setlist'][0]['sets']['set']
+  url: string
+}
+
+function transformSetlistResponse(response: SetlistResponse) {
+  const transformedResult: TransformedSetlistResponse[] = []
+  for (const setlist of response.setlist) {
+    transformedResult.push({
+      id: setlist.id,
+      artist: setlist.artist,
+      venue: setlist.venue,
+      date: setlist.eventDate,
+      sets: setlist.sets.set,
+      url: setlist.url,
+    })
+  }
+  return transformedResult
+}
+
 export const artistRouter = createTRPCRouter({
   search: procedure
     .input(
@@ -63,7 +89,7 @@ export const artistRouter = createTRPCRouter({
       // limit API calls during development
       if (env.USE_MOCK_DATA) {
         const result = SetlistResponseSchema.parse(mockSetlistData)
-        return result
+        return transformSetlistResponse(result)
       }
 
       const url =
@@ -86,6 +112,6 @@ export const artistRouter = createTRPCRouter({
 
       const data = await response.json()
       const parsedData = SetlistResponseSchema.parse(data)
-      return parsedData
+      return transformSetlistResponse(parsedData)
     }),
 })

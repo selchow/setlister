@@ -39,11 +39,14 @@ export const spotifyRouter = createTRPCRouter({
       z.object({
         artistName: z.string(),
         sets: z.array(SetSchema).min(1),
-        // TODO: add playlist name, description, public/private
+        playlistName: z.string().min(1),
+        playlistDescription: z.string().default(''),
+        isPublic: z.boolean().default(true),
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { artistName, sets } = input
+      const { artistName, sets, playlistName, playlistDescription, isPublic } =
+        input
 
       const accessToken = await getAccessToken(ctx.userId)
 
@@ -57,9 +60,9 @@ export const spotifyRouter = createTRPCRouter({
 
       const playlist = await createPlaylist({
         accessToken,
-        playlistName: 'test',
-        playlistDescription: 'something',
-        isPublic: false,
+        playlistName,
+        playlistDescription,
+        isPublic,
       })
 
       const addTrackResult = await addTracksToPlaylist({
