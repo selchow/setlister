@@ -1,11 +1,110 @@
+import type { RouterOutputs } from '~/utils/trpc'
 import { useRouter } from 'next/router'
-import { Fragment } from 'react'
-import { Accordion, Button, Title, Loader } from '@mantine/core'
+import { Fragment, useState } from 'react'
+import {
+  Accordion,
+  Button,
+  Title,
+  Loader,
+  Modal,
+  TextInput,
+  Checkbox,
+} from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import { useForm, zodResolver } from '@mantine/form'
+import { useUser } from '@clerk/nextjs'
+import { z } from 'zod'
 import { trpc } from '~/utils/trpc'
+
+type SetlistData = RouterOutputs['artist']['getSetlists'][0]
+
+type CreatePlaylistModalProps = {
+  opened: boolean
+  close: () => void
+  setlist: SetlistData
+}
+
+const CreatePlaylistSchema = z.object({
+  name: z.string().min(1, 'playlist name is required'),
+  description: z.string().default(''),
+  isPublic: z.boolean().default(true),
+})
+
+const CreatePlaylistModal = ({
+  opened,
+  close,
+  setlist,
+}: CreatePlaylistModalProps) => {
+  const form = useForm({
+    initialValues: {
+      name: '',
+      description: '',
+      isPublic: true,
+    },
+    validate: zodResolver(CreatePlaylistSchema),
+  })
+
+  const { mutate, isLoading, isSuccess } =
+    trpc.spotify.createPlaylist.useMutation()
+
+  return (
+    <Modal opened={opened} onClose={close} title="create playlist">
+      <form
+        className="space-y-2"
+        onSubmit={form.onSubmit((values) => {
+          mutate({
+            sets: setlist.sets,
+            artistName: setlist.artist.name,
+            playlistName: values.name,
+            playlistDescription: values.description,
+            isPublic: values.isPublic,
+          })
+        })}
+      >
+        <TextInput
+          placeholder="my cool playlist"
+          label="name"
+          withAsterisk
+          {...form.getInputProps('name')}
+        />
+
+        <TextInput
+          placeholder="full of good songs"
+          label="description"
+          {...form.getInputProps('description')}
+        />
+
+        <Checkbox
+          mt="md"
+          label="public"
+          {...form.getInputProps('isPublic', { type: 'checkbox' })}
+        />
+
+        <Button
+          mt={20}
+          variant="default"
+          type="submit"
+          disabled={isLoading || isSuccess}
+        >
+          {isLoading
+            ? 'loading...'
+            : isSuccess
+            ? 'playlist created!'
+            : 'create playlist'}
+        </Button>
+      </form>
+    </Modal>
+  )
+}
 
 export default function ArtistPage() {
   const router = useRouter()
   const { mbid } = router.query
+  const [opened, { open, close }] = useDisclosure()
+
+  const { isSignedIn } = useUser()
+
+  const [activeSetlist, setActiveSetlist] = useState<SetlistData | null>(null)
 
   const { data, isLoading, isRefetching, isError } =
     trpc.artist.getSetlists.useQuery(
@@ -21,14 +120,8 @@ export default function ArtistPage() {
       },
     )
 
-  const {
-    mutate,
-    isLoading: isCreatingPlaylist,
-    isSuccess,
-  } = trpc.spotify.createPlaylist.useMutation()
-
   // is there a better way to get artist info from the data?
-  const artist = data && data.setlist[0].artist
+  const artist = data && data[0].artist
 
   return (
     <div className="mt-4 grow flex flex-col gap-2">
@@ -40,10 +133,10 @@ export default function ArtistPage() {
 
       {data ? (
         <Accordion variant="default">
-          {data.setlist.map((setlist) => (
+          {data.map((setlist) => (
             <Accordion.Item key={setlist.id} value={setlist.id}>
               <Accordion.Control>
-                {getDateString(setlist.eventDate)} - {setlist.venue.name}
+                {getDateString(setlist.date)} - {setlist.venue.name}
               </Accordion.Control>
 
               <Accordion.Panel>
@@ -51,19 +144,16 @@ export default function ArtistPage() {
                   {/* TODO: UX when not logged in or not authorized */}
                   <Button
                     variant="default"
-                    disabled={isCreatingPlaylist || isSuccess}
                     onClick={() => {
-                      mutate({
-                        artistName: artist?.name ?? '',
-                        sets: setlist.sets.set,
-                      })
+                      if (isSignedIn) {
+                        setActiveSetlist(setlist)
+                        open()
+                      } else {
+                        // TODO: display a toast
+                      }
                     }}
                   >
-                    {isCreatingPlaylist
-                      ? 'Loading...'
-                      : isSuccess
-                      ? 'Playlist created!'
-                      : 'Create playlist'}
+                    create playlist
                   </Button>
 
                   <a className="" href={setlist.url}>
@@ -71,7 +161,7 @@ export default function ArtistPage() {
                   </a>
                 </div>
 
-                {setlist.sets.set.map((set) => (
+                {setlist.sets.map((set) => (
                   // TODO: need to fix key issue here (there's no id)
                   <Fragment key={set.encore}>
                     {set.encore && <p className="py-2">Encore:</p>}
@@ -88,6 +178,17 @@ export default function ArtistPage() {
             </Accordion.Item>
           ))}
         </Accordion>
+      ) : null}
+
+      {activeSetlist ? (
+        <CreatePlaylistModal
+          setlist={activeSetlist}
+          opened={opened}
+          close={() => {
+            close()
+            setActiveSetlist(null)
+          }}
+        />
       ) : null}
 
       {(isLoading || isRefetching) && (
@@ -113,8 +214,6 @@ const getDateString = (date: string) => {
     year: 'numeric',
   })
 }
-
-// type SetlistData = RouterOutputs['artist']['getSetlists']
 
 // function calculateSongInfo(
 //   data: SetlistData | undefined,
