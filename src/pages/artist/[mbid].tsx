@@ -12,8 +12,10 @@ import {
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm, zodResolver } from '@mantine/form'
+import { notifications } from '@mantine/notifications'
 import { useUser } from '@clerk/nextjs'
 import { z } from 'zod'
+import { IconCheck } from '@tabler/icons-react'
 import { trpc } from '~/utils/trpc'
 
 type SetlistData = RouterOutputs['artist']['getSetlists'][0]
@@ -86,11 +88,18 @@ const CreatePlaylistModal = ({
           type="submit"
           disabled={isLoading || isSuccess}
         >
-          {isLoading
-            ? 'loading...'
-            : isSuccess
-            ? 'playlist created!'
-            : 'create playlist'}
+          {isLoading ? (
+            <span className="flex items-center gap-2">
+              <Loader size={14} /> loading...
+            </span>
+          ) : isSuccess ? (
+            <span className="flex gap-1">
+              <IconCheck size={16} />
+              playlist created!
+            </span>
+          ) : (
+            'create playlist'
+          )}
         </Button>
       </form>
     </Modal>
@@ -101,7 +110,8 @@ export default function ArtistPage() {
   const router = useRouter()
   const { mbid } = router.query
   const [opened, { open, close }] = useDisclosure()
-  const { isSignedIn } = useUser()
+  const { user, isSignedIn } = useUser()
+  const isAccountSetup = user?.publicMetadata.isAccountSetup
 
   const [activeSetlist, setActiveSetlist] = useState<SetlistData | null>(null)
 
@@ -124,59 +134,71 @@ export default function ArtistPage() {
 
   return (
     <div className="mt-4 grow flex flex-col gap-2">
-      <Title pb={4} order={2} size="h2" className="border-b">
-        {artist?.name}
-      </Title>
-
-      <h3 className="text-lg font-semibold">recent setlists</h3>
-
       {data ? (
-        <Accordion variant="default">
-          {data.map((setlist) => (
-            <Accordion.Item key={setlist.id} value={setlist.id}>
-              <Accordion.Control>
-                {getDateString(setlist.date)} - {setlist.venue.name}
-              </Accordion.Control>
+        <>
+          <Title pb={4} order={2} size="h2" className="border-b">
+            {artist?.name}
+          </Title>
 
-              <Accordion.Panel>
-                <div className="flex items-center justify-between py-4">
-                  {/* TODO: UX when not logged in or not authorized */}
-                  <Button
-                    variant="default"
-                    onClick={() => {
-                      if (isSignedIn) {
-                        setActiveSetlist(setlist)
-                        open()
-                      } else {
-                        // TODO: display a toast
-                      }
-                    }}
-                  >
-                    create playlist
-                  </Button>
+          <h3 className="text-lg font-semibold">recent setlists</h3>
 
-                  <a className="" href={setlist.url}>
-                    view on setlist.fm
-                  </a>
-                </div>
+          <Accordion variant="default">
+            {data.map((setlist) => (
+              <Accordion.Item key={setlist.id} value={setlist.id}>
+                <Accordion.Control>
+                  {getDateString(setlist.date)} - {setlist.venue.name}
+                </Accordion.Control>
 
-                {setlist.sets.map((set) => (
-                  // TODO: need to fix key issue here (there's no id)
-                  <Fragment key={set.encore}>
-                    {set.encore && <p className="py-2">Encore:</p>}
-                    <ol className="space-y-1">
-                      {set.song.map((song, index) => (
-                        <li key={song.name}>
-                          {index + 1}: {song.name}
-                        </li>
-                      ))}
-                    </ol>
-                  </Fragment>
-                ))}
-              </Accordion.Panel>
-            </Accordion.Item>
-          ))}
-        </Accordion>
+                <Accordion.Panel>
+                  <div className="flex items-center justify-between py-4">
+                    {/* TODO: UX when not logged in or not authorized */}
+                    <Button
+                      variant="default"
+                      onClick={() => {
+                        if (isSignedIn && isAccountSetup) {
+                          setActiveSetlist(setlist)
+                          open()
+                        } else if (isSignedIn && !isAccountSetup) {
+                          notifications.show({
+                            title: 'you need to set up your account!',
+                            message:
+                              'click the link in the header to authorize with spotify to start creating playlists',
+                          })
+                        } else {
+                          notifications.show({
+                            title: 'you need to log in!',
+                            message:
+                              'click the link in the header to log in or create an account',
+                          })
+                        }
+                      }}
+                    >
+                      create playlist
+                    </Button>
+
+                    <a className="" href={setlist.url}>
+                      view on setlist.fm
+                    </a>
+                  </div>
+
+                  {setlist.sets.map((set) => (
+                    // TODO: need to fix key issue here (there's no id)
+                    <Fragment key={set.encore}>
+                      {set.encore && <p className="py-2">Encore:</p>}
+                      <ol className="space-y-1">
+                        {set.song.map((song, index) => (
+                          <li key={song.name}>
+                            {index + 1}: {song.name}
+                          </li>
+                        ))}
+                      </ol>
+                    </Fragment>
+                  ))}
+                </Accordion.Panel>
+              </Accordion.Item>
+            ))}
+          </Accordion>
+        </>
       ) : null}
 
       {activeSetlist ? (

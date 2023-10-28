@@ -1,5 +1,6 @@
 import '~/styles/globals.css'
 import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
 
 import type { AppProps, AppType } from 'next/app'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -8,6 +9,7 @@ import Link from 'next/link'
 import { ClerkProvider, SignOutButton, useAuth } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import { MantineProvider } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
 import { useState } from 'react'
 import { trpc } from '~/utils/trpc'
 
@@ -50,6 +52,7 @@ const App: AppType = ({ Component, pageProps }: AppProps) => {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <MantineProvider defaultColorScheme="dark">
+          <Notifications />
           <Layout>
             <Component {...pageProps} />
           </Layout>

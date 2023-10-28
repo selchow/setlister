@@ -7,7 +7,10 @@ export const ClientEnvSchema = z.object({
 })
 
 export const ServerEnvSchema = ClientEnvSchema.extend({
-  USE_MOCK_DATA: z.coerce.boolean().default(false),
+  USE_MOCK_DATA: z.preprocess(
+    (val) => val === 'true',
+    z.boolean().default(false),
+  ),
   SETLIST_FM_API_KEY: z.string(),
   SPOTIFY_CLIENT_SECRET: z.string(),
   CLERK_SECRET_KEY: z.string(),

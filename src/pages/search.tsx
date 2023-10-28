@@ -35,8 +35,10 @@ export default function SearchPage() {
 
       {isError && <p>sorry, something went wrong :(</p>}
 
+      {data && data.length === 0 && <p>no results found :(</p>}
+
       {data &&
-        data.artist.map((artist) => (
+        data.map((artist) => (
           <Link
             className="block"
             href={`/artist/${artist.mbid}`}

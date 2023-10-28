@@ -3,6 +3,9 @@ import { clerkClient } from '@clerk/nextjs'
 import { env } from '~/utils/env/server.mjs'
 
 declare global {
+  interface UserPublicMetadata {
+    isAccountSetup: boolean
+  }
   interface UserPrivateMetadata {
     accessToken: string
     refreshToken: string
