@@ -37,7 +37,7 @@ export const artistRouter = createTRPCRouter({
   search: procedure
     .input(
       z.object({
-        slug: z.string(),
+        slug: z.string().min(1),
         page: z.number().default(1),
       }),
     )
@@ -45,7 +45,7 @@ export const artistRouter = createTRPCRouter({
       // limit API calls during development
       if (env.USE_MOCK_DATA) {
         const result = ArtistSearchSchema.parse(mockSearchData)
-        return result
+        return result.artist
       }
 
       const { slug, page } = input
@@ -66,14 +66,17 @@ export const artistRouter = createTRPCRouter({
         },
       })
 
-      // TODO: error handling?
+      if (response.status === 404) {
+        return []
+      }
+
       if (!response.ok) {
         throw new Error('something went wrong :(')
       }
 
       const data = await response.json()
       const parsedData = ArtistSearchSchema.parse(data)
-      return parsedData
+      return parsedData.artist
     }),
 
   getSetlists: procedure
