@@ -48,9 +48,6 @@ export const spotifyRouter = createTRPCRouter({
       const { artistName, sets, playlistName, playlistDescription, isPublic } =
         input
 
-      await new Promise((res) => setTimeout(res, 5000))
-      return true
-
       const accessToken = await getAccessToken(ctx.userId)
 
       // combine songs from multiple sets into one array
