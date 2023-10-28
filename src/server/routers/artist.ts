@@ -87,8 +87,6 @@ export const artistRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input }) => {
-      await new Promise((res) => setTimeout(res, 5000))
-
       const { mbid, page } = input
 
       // limit API calls during development
