@@ -18,7 +18,7 @@ export default function AuthorizePage() {
 
   useEffect(() => {
     if (typeof code === 'string' && typeof state === 'string') {
-      mutate({ code, state: 'fail' })
+      mutate({ code, state })
     }
   }, [code, state, mutate])
 
