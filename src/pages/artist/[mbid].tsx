@@ -118,9 +118,10 @@ export default function ArtistPage() {
   const { data, isLoading, isRefetching, isError } =
     trpc.artist.getSetlists.useQuery(
       {
-        mbid: (mbid as string) ?? '',
+        mbid: mbid as string,
       },
       {
+        enabled: Boolean(mbid),
         refetchOnMount: false,
         refetchOnWindowFocus: false,
         retry: 2,
@@ -129,15 +130,14 @@ export default function ArtistPage() {
       },
     )
 
-  // is there a better way to get artist info from the data?
   const artist = data && data[0].artist
 
   return (
     <div className="mt-4 grow flex flex-col gap-2">
-      {data ? (
+      {data && artist ? (
         <>
           <Title pb={4} order={2} size="h2" className="border-b">
-            {artist?.name}
+            {artist.name}
           </Title>
 
           <h3 className="text-lg font-semibold">recent setlists</h3>
@@ -151,7 +151,6 @@ export default function ArtistPage() {
 
                 <Accordion.Panel>
                   <div className="flex items-center justify-between py-4">
-                    {/* TODO: UX when not logged in or not authorized */}
                     <Button
                       variant="default"
                       onClick={() => {
@@ -182,8 +181,9 @@ export default function ArtistPage() {
                   </div>
 
                   {setlist.sets.map((set) => (
-                    // TODO: need to fix key issue here (there's no id)
-                    <Fragment key={set.encore}>
+                    <Fragment
+                      key={`${set.encore}-${artist.name}=${set.song[0]?.name}`}
+                    >
                       {set.encore && <p className="py-2">Encore:</p>}
                       <ol className="space-y-1">
                         {set.song.map((song, index) => (

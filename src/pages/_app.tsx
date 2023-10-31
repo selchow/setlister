@@ -22,7 +22,6 @@ function Layout({ children }: { children: React.ReactNode }) {
         <Link href="/">home</Link>
         {isSignedIn ? (
           <>
-            {/* TODO: check if user is already authed (metadata) */}
             <Link href="/authorize">authorize with spotify</Link>
             <SignOutButton>sign out</SignOutButton>
           </>
