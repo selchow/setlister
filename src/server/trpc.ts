@@ -6,6 +6,7 @@ export const createTRPCContext = ({ req }: CreateNextContextOptions) => {
   const auth = getAuth(req)
   return {
     userId: auth.userId,
+    req,
   }
 }
 

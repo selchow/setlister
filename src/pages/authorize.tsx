@@ -1,42 +1,52 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { Button } from '@mantine/core'
+import { Button, Loader } from '@mantine/core'
+import { useUser } from '@clerk/nextjs'
+import { notifications } from '@mantine/notifications'
 import { trpc } from '~/utils/trpc'
-import { env } from '~/utils/env/client.mjs'
+import { AuthUrlResponseSchema } from '~/utils/schemas'
 
 export default function AuthorizePage() {
   const router = useRouter()
-  const { code } = router.query
+  const { code, state } = router.query
 
-  // TODO: check metadata to see if the user is already setup
-
-  // TODO: do something if the user isn't logged in
-
-  const authUrl =
-    'https://accounts.spotify.com/authorize?' +
-    new URLSearchParams({
-      client_id: env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
-      redirect_uri: env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI,
-      response_type: 'code',
-      scope: 'playlist-modify-public playlist-modify-private',
-      // TODO: figure out what state is for?
-      // state: '34fFs29kd09',
-    })
+  const { user } = useUser()
+  const isAccountSetup = user?.publicMetadata.isAccountSetup
 
   const { mutate, isLoading, isSuccess, isError } =
     trpc.spotify.authorize.useMutation()
 
   useEffect(() => {
-    if (typeof code === 'string') {
-      mutate({ code })
+    if (typeof code === 'string' && typeof state === 'string') {
+      mutate({ code, state })
     }
-  }, [code, mutate])
+  }, [code, state, mutate])
+
+  const handleAuthorizeButtonClick = async () => {
+    const response = await fetch('/api/authorize')
+    const data = await response.json()
+    const result = AuthUrlResponseSchema.safeParse(data)
+    if (result.success) {
+      window.location.href = result.data.authUrl
+    } else {
+      notifications.show({
+        title: 'something went wrong :(',
+        message: 'please try again later',
+        color: 'red',
+      })
+    }
+  }
 
   return (
-    <div className="mt-4 flex flex-col items-center gap-4">
+    <div className="mt-4 flex flex-col gap-4">
       {code ? (
         <>
-          {isLoading && <p>Stand by, setting up your account...</p>}
+          {isLoading && (
+            <p className="flex items-center gap-2">
+              <Loader size={16} />
+              Stand by, setting up your account...
+            </p>
+          )}
           {isSuccess && (
             <p>
               Succcess! Your account is set up and ready to use our Spotify
@@ -55,12 +65,23 @@ export default function AuthorizePage() {
           <h2 className="text-2xl font-bold">
             To create playlists, you need to authorize this app with Spotify.
           </h2>
-          <p className="text-center">
+          <p>
             Click the link below to get redirected to Spotify, where you can
             confirm authorization. This allows us to create public and private
             playlists.
           </p>
-          <Button variant="default" component="a" href={authUrl}>
+          {isAccountSetup && (
+            <p>
+              Note: your account is already set up, but you can re-authorize for
+              fun or if you run into any issues creating playlists.
+            </p>
+          )}
+          <Button
+            variant="default"
+            className="place-self-stretch md:place-self-start"
+            size="md"
+            onClick={handleAuthorizeButtonClick}
+          >
             Authorize
           </Button>
         </>

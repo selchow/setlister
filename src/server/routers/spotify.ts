@@ -1,6 +1,7 @@
 import type { SongSchema } from '../schemas'
 import { z } from 'zod'
 import { clerkClient } from '@clerk/nextjs'
+import { TRPCError } from '@trpc/server'
 import { authedProcedure, createTRPCRouter } from '../trpc'
 import { SetSchema } from '../schemas'
 import {
@@ -16,16 +17,25 @@ export const spotifyRouter = createTRPCRouter({
     .input(
       z.object({
         code: z.string(),
+        state: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
+      // confirm state matches
+      if (input.state !== ctx.req.cookies.state) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'state does not match',
+        })
+      }
+
       const { access_token, expires_in, refresh_token } =
         await requestAccessToken(input.code)
 
       await clerkClient.users.updateUserMetadata(ctx.userId, {
         publicMetadata: {
           isAccountSetup: true,
-        },
+        } satisfies UserPublicMetadata,
         privateMetadata: {
           accessToken: access_token,
           refreshToken: refresh_token,
