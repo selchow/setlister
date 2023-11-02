@@ -117,7 +117,7 @@ export default function ArtistPage() {
 
   const [activeSetlist, setActiveSetlist] = useState<SetlistData | null>(null)
   const [activePage, setActivePage] = useState(1)
-  const [artist, setArtist] = useState<Artist | null>(null)
+  const [artist, setArtist] = useState<Artist>()
 
   // needed b/c query params are undefined on first render
   useEffect(() => {
