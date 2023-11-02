@@ -19,9 +19,9 @@ type TransformedSetlistResponse = {
 }
 
 function transformSetlistResponse(response: SetlistResponse) {
-  const transformedResult: TransformedSetlistResponse[] = []
+  const transformedSetlists: TransformedSetlistResponse[] = []
   for (const setlist of response.setlist) {
-    transformedResult.push({
+    transformedSetlists.push({
       id: setlist.id,
       artist: setlist.artist,
       venue: setlist.venue,
@@ -30,7 +30,10 @@ function transformSetlistResponse(response: SetlistResponse) {
       url: setlist.url,
     })
   }
-  return transformedResult
+  return {
+    setlists: transformedSetlists,
+    totalPages: Math.ceil(response.total / response.itemsPerPage),
+  }
 }
 
 export const artistRouter = createTRPCRouter({
@@ -98,7 +101,7 @@ export const artistRouter = createTRPCRouter({
       const url =
         `${SETLIST_FM_API_BASE_URL}/artist/${mbid}/setlists?` +
         new URLSearchParams({
-          page: String(page),
+          p: String(page),
         })
 
       const response = await fetch(url, {
