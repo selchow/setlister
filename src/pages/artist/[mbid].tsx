@@ -1,6 +1,6 @@
 import type { RouterOutputs } from '~/utils/trpc'
 import { useRouter } from 'next/router'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import {
   Accordion,
   Button,
@@ -9,6 +9,7 @@ import {
   Modal,
   TextInput,
   Checkbox,
+  Pagination,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm, zodResolver } from '@mantine/form'
@@ -18,7 +19,8 @@ import { z } from 'zod'
 import { IconCheck } from '@tabler/icons-react'
 import { trpc } from '~/utils/trpc'
 
-type SetlistData = RouterOutputs['artist']['getSetlists'][0]
+type SetlistData = RouterOutputs['artist']['getSetlists']['setlists'][0]
+type Artist = SetlistData['artist']
 
 type CreatePlaylistModalProps = {
   opened: boolean
@@ -108,17 +110,25 @@ const CreatePlaylistModal = ({
 
 export default function ArtistPage() {
   const router = useRouter()
-  const { mbid } = router.query
+  const { mbid, page } = router.query
   const [opened, { open, close }] = useDisclosure()
   const { user, isSignedIn } = useUser()
   const isAccountSetup = user?.publicMetadata.isAccountSetup
 
   const [activeSetlist, setActiveSetlist] = useState<SetlistData | null>(null)
+  const [activePage, setActivePage] = useState(1)
+  const [artist, setArtist] = useState<Artist>()
+
+  // needed b/c query params are undefined on first render
+  useEffect(() => {
+    setActivePage(typeof page === 'string' ? Number(page) : 1)
+  }, [page])
 
   const { data, isLoading, isRefetching, isError } =
     trpc.artist.getSetlists.useQuery(
       {
         mbid: mbid as string,
+        page: activePage,
       },
       {
         enabled: Boolean(mbid),
@@ -130,20 +140,25 @@ export default function ArtistPage() {
       },
     )
 
-  const artist = data && data[0].artist
+  if (data && !artist) {
+    setArtist(data.setlists[0].artist)
+  }
 
   return (
     <div className="mt-4 grow flex flex-col gap-2">
-      {data && artist ? (
+      {artist ? (
         <>
           <Title pb={4} order={2} size="h2" className="border-b">
             {artist.name}
           </Title>
 
-          <h3 className="text-lg font-semibold">recent setlists</h3>
-
+          <h3 className="text-lg font-semibold">setlists</h3>
+        </>
+      ) : null}
+      {data && artist ? (
+        <>
           <Accordion variant="default">
-            {data.map((setlist) => (
+            {data.setlists.map((setlist) => (
               <Accordion.Item key={setlist.id} value={setlist.id}>
                 <Accordion.Control>
                   {getDateString(setlist.date)} - {setlist.venue.name}
@@ -198,6 +213,18 @@ export default function ArtistPage() {
               </Accordion.Item>
             ))}
           </Accordion>
+
+          <Pagination
+            value={activePage}
+            onChange={(page) => {
+              setActivePage(page)
+              router.push(`/artist/${mbid}?page=${page}`, undefined, {
+                scroll: false,
+              })
+            }}
+            total={data.totalPages}
+            siblings={2}
+          />
         </>
       ) : null}
 
@@ -225,9 +252,10 @@ export default function ArtistPage() {
 
 const getDateString = (date: string) => {
   const parts = date.split('-')
+  console.log('dates: ', date, ' parsed to ', parts)
   return new Date(
     Number(parts[2]),
-    Number(parts[1]),
+    Number(parts[1]) - 1,
     Number(parts[0]),
   ).toLocaleDateString(undefined, {
     month: 'short',

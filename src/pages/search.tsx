@@ -9,9 +9,10 @@ export default function SearchPage() {
 
   const { data, isLoading, isError } = trpc.artist.search.useQuery(
     {
-      slug: (query as string) ?? '',
+      slug: query as string,
     },
     {
+      enabled: Boolean(query),
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       retry: 2,
