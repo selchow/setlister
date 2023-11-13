@@ -5,7 +5,7 @@ export default authMiddleware({
     '/',
     '/sign-in',
     '/register',
-    '/search',
+    '/search/(.*)',
     '/artist/(.*)',
     '/api/trpc/(.*)',
   ],

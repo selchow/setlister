@@ -25,7 +25,7 @@ export default function HomePage() {
       <form
         className="space-y-3"
         onSubmit={form.onSubmit(({ name }) => {
-          router.push(`/search?query=${name}`)
+          router.push(`/search/${name}`)
         })}
       >
         <TextInput
