@@ -3,7 +3,6 @@ import mockSetlistData from '~/data/setlist.json'
 import { env } from '~/utils/env/server.mjs'
 import { createTRPCRouter, procedure } from '../trpc'
 import { SetlistResponseSchema } from '../schemas'
-import { searchArtists } from '../api/setlistfm'
 
 const SETLIST_FM_API_BASE_URL = 'https://api.setlist.fm/rest/1.0'
 
