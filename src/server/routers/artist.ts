@@ -37,18 +37,6 @@ function transformSetlistResponse(response: SetlistResponse) {
 }
 
 export const artistRouter = createTRPCRouter({
-  // may remove this route
-  search: procedure
-    .input(
-      z.object({
-        slug: z.string().min(1),
-        page: z.number().default(1),
-      }),
-    )
-    .query(async ({ input }) => {
-      return searchArtists({ slug: input.slug, page: input.page })
-    }),
-
   getSetlists: procedure
     .input(
       z.object({
